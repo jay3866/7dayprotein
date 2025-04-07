@@ -1,5 +1,10 @@
-import React from 'react';
+// React is automatically imported in Vite projects
 import { Star, CheckCircle2, ArrowUpCircle, ArrowDownCircle } from 'lucide-react';
+
+// IMPORTANT FOR CLIENT: To remove the exit popup test button that appears in development mode,
+// edit the ExitPopup.tsx file in the components directory and remove or comment out lines 40-46
+// which contain the test button JSX code. You can also completely remove the ExitPopup component
+// by removing this import and the <ExitPopup /> component on line 7 if you don't want the exit popup feature.
 import { ExitPopup } from './components/ExitPopup';
 
 function App() {
@@ -8,26 +13,36 @@ function App() {
       <ExitPopup />
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-amber-50 to-emerald-50 py-20">
-        <div className="max-w-[1100px] mx-auto px-4 text-center">
-          <div className="max-w-[600px] mx-auto mb-12">
-            <img
-              src="https://raw.githubusercontent.com/stackblitz/stackblitz-codeflow/main/examples/metabolic-reset-diagram.png" 
-              alt="7-Day Metabolic Reset Diagram showing protein satiety, hormonal balance, fat adaptation, and effortless weight loss"
-              className="w-full h-auto animate-float"
-            />
+        <div className="max-w-[1100px] mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-2 slide-in">
+                Reset Your Metabolism
+              </h1>
+              <div className="text-5xl md:text-7xl font-bold text-emerald-700 mb-6 slide-in slide-in-delay-1">
+                <span className="animate-underline">in 7 Days</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-6 slide-in slide-in-delay-2">
+                Without Counting, Cardio, or Cutting Everything You Love
+              </h2>
+              <p className="text-xl md:text-2xl text-gray-600 mb-8 slide-in slide-in-delay-3">
+                Discover the fat-loss method based on how your biology actually works—not outdated diet rules.
+              </p>
+              <p className="text-lg text-gray-700 mb-4 font-medium slide-in slide-in-delay-4">
+                Limited Time: Get the complete Reset system and all bonuses today
+              </p>
+              <button className="bg-amber-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform animate-pulse-shadow slide-in slide-in-delay-4">
+                Yes, I Want the Reset – Only $37
+              </button>
+            </div>
+            <div className="max-w-[500px] mx-auto md:mx-0 md:ml-auto">
+              <img
+                src="/7daymetabolicreset.png" 
+                alt="7-Day Metabolic Reset Diagram showing protein satiety, hormonal balance, fat adaptation, and effortless weight loss"
+                className="w-full h-auto animate-float"
+              />
+            </div>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 slide-in">
-            Reset Your Metabolism in 7 Days—Without Counting, Cardio, or Cutting Everything You Love.
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 slide-in slide-in-delay-1">
-            Discover the fat-loss method based on how your biology actually works—not outdated diet rules.
-          </p>
-          <p className="text-lg text-gray-700 mb-4 font-medium slide-in slide-in-delay-2">
-            Limited Time: Get the complete Reset system and all bonuses today
-          </p>
-          <button className="bg-amber-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform animate-pulse-shadow slide-in slide-in-delay-3">
-            Yes, I Want the Reset – Only $37
-          </button>
         </div>
       </section>
 
@@ -35,7 +50,8 @@ function App() {
       <section className="bg-white py-20">
         <div className="max-w-[1100px] mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-8 text-center">
-            It's Not Your Willpower. It's What You've Been Told to Eat.
+            It's Not Your Willpower.<br />
+            It's What You've Been Told to Eat.
           </h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -54,11 +70,12 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className="relative">
+            <div className="flex items-center justify-center">
               <img 
-                src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80"
-                alt="Healthy meal comparison"
-                className="rounded-lg shadow-xl"
+                src="/protein1.png"
+                alt="Protein-rich meal comparison"
+                className="rounded-lg max-w-full h-auto object-contain"
+                style={{ maxHeight: '380px' }}
               />
             </div>
           </div>
@@ -118,7 +135,7 @@ function App() {
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-12 text-center">
             What's Inside the 30-Minute Training
           </h2>
-          <div className="space-y-6">
+          <div className="max-w-[650px] mx-auto space-y-6">
             {[
               "How protein satiety controls cravings",
               "How specific foods restore hormonal balance",
@@ -126,7 +143,7 @@ function App() {
               "Exactly what to eat for 7 days",
               "A simple plan without complexity"
             ].map((item, index) => (
-              <div key={index} className="flex items-start gap-4">
+              <div key={index} className="flex items-start gap-5">
                 <CheckCircle2 className="text-emerald-500 w-6 h-6 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold text-xl mb-2">{item}</h3>
@@ -135,7 +152,7 @@ function App() {
               </div>
             ))}
           </div>
-          <div className="mt-12 bg-amber-50 border border-amber-200 rounded-xl p-8">
+          <div className="mt-12 max-w-[650px] mx-auto bg-amber-50 border border-amber-200 rounded-xl p-8">
             <h3 className="text-2xl font-bold mb-4">BONUS: Printable Resources</h3>
             <p className="text-gray-600">Get instant access to our complete collection of printable guides, meal planners, and tracking sheets.</p>
           </div>
@@ -156,8 +173,12 @@ function App() {
           <div className="grid md:grid-cols-2 gap-12 mb-12">
             {/* Left Column with Single Large Animation Placeholder */}
             <div className="flex items-center justify-center">
-              <div className="w-full aspect-square max-w-md bg-gradient-to-br from-emerald-50 to-amber-50 rounded-2xl shadow-lg flex items-center justify-center">
-                <p className="text-gray-400 font-medium">[Metabolism Animation]</p>
+              <div className="w-full aspect-square max-w-md bg-gradient-to-br from-emerald-50 to-amber-50 rounded-2xl shadow-lg flex items-center justify-center overflow-hidden">
+                <img
+                  src="/3chart.png"
+                  alt="Metabolism chart showing protein satiety, hormone reset, and fat adaptation"
+                  className="w-full h-auto"
+                />
               </div>
             </div>
 
@@ -211,9 +232,7 @@ function App() {
             </ul>
           </div>
           <div className="text-center">
-            <p className="text-lg text-gray-700 mb-4 font-medium">
-              Join 10,000+ successful Reset graduates today
-            </p>
+            {/* You can add a custom call-to-action message here if needed */}
             <button className="bg-amber-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform shadow-lg">
               Get Instant Access – Just $37
             </button>
@@ -231,11 +250,11 @@ function App() {
             {[1, 2, 3, 4].map((index) => (
               <div key={index} className="bg-white rounded-xl p-6 shadow-lg border border-amber-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                 <div className="flex items-center gap-4 mb-4">
-                  <img
-                    src={`https://i.pravatar.cc/150?img=${index}`}
-                    alt="Testimonial"
-                    className="w-16 h-16 rounded-full ring-2 ring-amber-200 ring-offset-2"
-                  />
+                  <div
+                    className="w-16 h-16 rounded-full ring-2 ring-amber-200 ring-offset-2 bg-gray-200 flex items-center justify-center text-gray-400"
+                  >
+                    <span>User</span>
+                  </div>
                   <div>
                     <h3 className="font-semibold">Sarah Johnson</h3>
                     <div className="flex text-amber-500">

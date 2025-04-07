@@ -12,6 +12,13 @@
   50% { box-shadow: 0 20px 40px -15px rgba(251, 191, 36, 0.45); }
 }
 
+@keyframes underline-loop {
+  0% { width: 0; left: 0; right: auto; }
+  50% { width: 100%; left: 0; right: auto; }
+  50.1% { width: 100%; left: auto; right: 0; }
+  100% { width: 0; left: auto; right: 0; }
+}
+
 @keyframes slide-in {
   from {
     opacity: 0;
@@ -56,6 +63,23 @@
 
   .slide-in-delay-3 {
     animation-delay: 0.3s;
+  }
+
+  .slide-in-delay-4 {
+    animation-delay: 0.4s;
+  }
+  
+  .animate-underline {
+    position: relative;
+  }
+  
+  .animate-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    height: 4px;
+    background-color: #059669;
+    animation: underline-loop 3s ease-in-out infinite;
   }
 
   @keyframes fade-in {

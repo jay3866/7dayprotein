@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 
 export function ExitPopup() {
@@ -7,7 +7,11 @@ export function ExitPopup() {
   const isDev = import.meta.env.DEV;
 
   useEffect(() => {
-    let timeout: number;
+    // For development and testing: Remove the delay and simplify the exit intent detection
+    if (isDev) {
+      // The test button will handle showing the popup in dev mode
+      return;
+    }
     
     const handleMouseLeave = (e: MouseEvent) => {
       if (
@@ -20,16 +24,16 @@ export function ExitPopup() {
       }
     };
 
-    // Wait 30 seconds before enabling exit intent
-    timeout = setTimeout(() => {
+    // In production: Wait 5 seconds before enabling exit intent (reduced from 30s for testing)
+    const timeout = setTimeout(() => {
       document.addEventListener('mouseleave', handleMouseLeave);
-    }, 30000);
+    }, 5000);
 
     return () => {
       clearTimeout(timeout);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [hasShown]);
+  }, [hasShown, isDev]);
 
   const handleDismiss = () => {
     setIsVisible(false);
@@ -42,7 +46,7 @@ export function ExitPopup() {
       {isDev && (
         <button
           onClick={() => setIsVisible(true)}
-          className="fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-lg z-50 text-sm"
+          className="fixed bottom-4 right-4 bg-amber-500 text-white px-4 py-2 rounded-lg z-50 text-sm font-bold shadow-lg animate-pulse"
         >
           Test Exit Popup
         </button>
